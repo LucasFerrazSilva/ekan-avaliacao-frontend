@@ -1,0 +1,17 @@
+mat-toolbar {
+    padding: 10px 20px;
+    height: fit-content;
+}
+
+#home-link {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    color: #222;
+    font-size: 1.8rem;
+}
+
+#img-logo {
+    height: 50px;
+}
