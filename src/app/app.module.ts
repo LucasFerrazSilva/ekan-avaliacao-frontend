@@ -15,12 +15,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginComponent } from './auth/login/login.component';
+import { BeneficiariosComponent } from './beneficiarios/beneficiarios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    LoginComponent
+    LoginComponent,
+    BeneficiariosComponent
   ],
   imports: [
     BrowserModule,

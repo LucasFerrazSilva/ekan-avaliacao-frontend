@@ -35,6 +35,10 @@ export class AuthService {
     this.userSubject.next(null);
   }
 
+  isLoggedIn(): boolean {
+    return this.tokenService.hasToken();
+  }
+
   private handleSuccessLogin(res: Token) {
     const token = res.token;
     this.tokenService.setToken(token);
