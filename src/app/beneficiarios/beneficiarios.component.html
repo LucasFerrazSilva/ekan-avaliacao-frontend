@@ -28,8 +28,8 @@
             <ng-container matColumnDef="acoes">
               <th mat-header-cell *matHeaderCellDef> Ações </th>
               <td mat-cell *matCellDef="let element">
-                <button mat-icon-button color="accent" (click)="edit(element.id)"><mat-icon>edit</mat-icon></button>
-                <button mat-icon-button color="warn" (click)="delete(element.id)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button color="accent" (click)="edit(element.id)" matTooltip="Editar"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="warn" (click)="delete(element.id)" matTooltip="Remover"><mat-icon>delete</mat-icon></button>
               </td>
             </ng-container>
 
