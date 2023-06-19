@@ -1,0 +1,24 @@
+<mat-card id="login-card">
+    <mat-card-header><h2>Login</h2></mat-card-header>
+    <mat-card-content>
+        <div id="errors" *ngIf="errors.length > 0">
+            <div *ngFor="let error of errors">{{error}}</div>
+        </div>  
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div>                
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Login</mat-label>
+                    <input type="text" matInput formControlName="login">
+                </mat-form-field>    
+
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Senha</mat-label>
+                    <input type="password" matInput formControlName="password">
+                </mat-form-field>
+
+                <button type="submit" mat-flat-button color="accent" [disabled]="form.invalid">Entrar</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

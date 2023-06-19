@@ -3,4 +3,12 @@
         <img id="img-logo" src="assets/img/logo.png" alt="Logo Ekan">
         <span>Front-end Test</span>
     </a>
+    <div id="user-info" *ngIf="(user$ | async) as user; else login">
+        <mat-icon>person</mat-icon>
+        <span>{{user.sub}}</span>
+        <a class="user-link" (click)="logout()">Sair</a>
+    </div>
+    <ng-template #login>
+        <a class="user-link" routerLink="/login">Entrar</a>
+    </ng-template>
 </mat-toolbar>

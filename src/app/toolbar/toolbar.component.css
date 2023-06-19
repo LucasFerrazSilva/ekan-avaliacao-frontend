@@ -1,6 +1,8 @@
 mat-toolbar {
     padding: 10px 20px;
     height: fit-content;
+    display: flex;
+    justify-content: space-between;
 }
 
 #home-link {
@@ -14,4 +16,16 @@ mat-toolbar {
 
 #img-logo {
     height: 50px;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: none;
 }
