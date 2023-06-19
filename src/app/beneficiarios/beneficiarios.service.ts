@@ -22,4 +22,8 @@ export class BeneficiariosService {
     return this.http.post<Beneficiario>(`${API_URL}/beneficiarios`, novoBeneficiario);
   }
 
+  delete(id: number) {
+    return this.http.delete(`${API_URL}/beneficiarios/${id}`);
+  }
+
 }

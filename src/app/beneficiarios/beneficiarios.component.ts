@@ -15,10 +15,7 @@ export class BeneficiariosComponent {
   constructor(private service: BeneficiariosService) {}
 
   ngOnInit() {
-    this.service.list().subscribe({
-      next: data => this.beneficiarios = data,
-      error: err => console.log(err)
-    });
+    this.loadList();
   }
 
   edit(id: number) {
@@ -26,7 +23,14 @@ export class BeneficiariosComponent {
   }
 
   delete(id: number) {
-    console.log(id);
+    this.service.delete(id).subscribe(() => this.loadList());
+  }
+
+  private loadList() {
+    this.service.list().subscribe({
+      next: data => this.beneficiarios = data,
+      error: err => console.log(err)
+    });
   }
 
 }
