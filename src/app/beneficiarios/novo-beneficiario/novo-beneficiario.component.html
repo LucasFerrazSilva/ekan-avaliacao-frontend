@@ -1,0 +1,54 @@
+<mat-card class="main-card">
+    <mat-card-header>
+        <h2>Novo Beneficiário</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <div id="errors" *ngIf="errors.length > 0">
+            <div *ngFor="let error of errors">{{error}}</div>
+        </div> 
+        <form [formGroup]="form" (submit)="onSubmit()">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Nome</mat-label>
+                    <input type="text" matInput formControlName="nome">
+                </mat-form-field>   
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Telefone</mat-label>
+                    <input type="text" matInput formControlName="telefone" placeholder="(11) 12345-6789">
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <input matInput [matDatepicker]="dataNascimento" placeholder="dd/mm/aaaa" formControlName="dataNascimento">
+                    <mat-datepicker-toggle matIconSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+                    <mat-datepicker #dataNascimento></mat-datepicker>
+                </mat-form-field>            
+            </div>
+
+            <h4>Documentos</h4>
+            <div id="documentos" formArrayName="documentosDTOs">
+                <ng-container *ngFor="let documentoForm of documentosFormArrayControls; let i=index;">
+                    <div class="documento" [formGroup]="documentoForm">
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Tipo do Documento</mat-label>
+                            <input type="text" matInput formControlName="tipoDocumento">
+                        </mat-form-field>  
+
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Descrição</mat-label>
+                            <input type="text" matInput formControlName="descricao">
+                        </mat-form-field>  
+
+                        <button class="remove-documento-button" type="button" color="warn" mat-mini-fab (click)="deleteDocumento(i)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </div>
+                </ng-container>
+                <button class="add-documento-button" type="button" color="accent" mat-mini-fab (click)="addDocumento()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+
+            <button id="submit-button" mat-flat-button color="accent" [disabled]="form.invalid">Adicionar</button>
+        </form>
+    </mat-card-content>
+</mat-card>

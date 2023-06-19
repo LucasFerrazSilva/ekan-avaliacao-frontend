@@ -10,6 +10,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,13 +20,15 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginComponent } from './auth/login/login.component';
 import { BeneficiariosComponent } from './beneficiarios/beneficiarios.component';
 import { RequestInterceptor } from './auth/request.interceptor';
+import { NovoBeneficiarioComponent } from './beneficiarios/novo-beneficiario/novo-beneficiario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     LoginComponent,
-    BeneficiariosComponent
+    BeneficiariosComponent,
+    NovoBeneficiarioComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +44,18 @@ import { RequestInterceptor } from './auth/request.interceptor';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
       multi: true
+    },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'pt-BR'
     }
   ],
   bootstrap: [AppComponent]

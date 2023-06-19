@@ -3,6 +3,7 @@
         <h2>Beneficiários</h2>
     </mat-card-header>
     <mat-card-content>
+        <a routerLink="/novo" mat-flat-button color="accent">Adicionar</a>
         <table mat-table [dataSource]="beneficiarios">
             <ng-container matColumnDef="nome">
               <th mat-header-cell *matHeaderCellDef> Nome </th>
