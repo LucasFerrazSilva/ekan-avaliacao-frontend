@@ -8,6 +8,7 @@ import { tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import jwt_decode from 'jwt-decode'
 import { User } from './user.interface';
+import { Router } from '@angular/router';
 
 const API_URL = environment.apiUrl;
 
@@ -17,8 +18,13 @@ const API_URL = environment.apiUrl;
 export class AuthService {
 
   private userSubject = new BehaviorSubject<User | null>(null);
+  private redirectUrl: string | null = null;
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {
+  constructor(
+    private http: HttpClient, 
+    private tokenService: TokenService,
+    private router: Router
+  ) {
     if (this.tokenService.hasToken())
       this.decodeAndNotify();
   }
@@ -39,10 +45,16 @@ export class AuthService {
     return this.tokenService.hasToken();
   }
 
+  setRedirectUrl(url: string) {
+    this.redirectUrl = url;
+  }
+
   private handleSuccessLogin(res: Token) {
     const token = res.token;
     this.tokenService.setToken(token);
     this.decodeAndNotify();
+    this.router.navigate([this.redirectUrl || '/']);
+    this.redirectUrl = null;
   }
 
   private decodeAndNotify() {

@@ -30,7 +30,6 @@ export class LoginComponent {
   onSubmit() {
     const credentials = this.form.getRawValue() as Credentials;
     this.authService.login(credentials).subscribe({
-      next: data => this.handleLoginSuccess(data),
       error: err => this.handleError(err)
     });
   }

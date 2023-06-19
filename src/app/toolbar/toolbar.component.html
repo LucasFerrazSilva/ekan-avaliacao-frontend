@@ -3,6 +3,7 @@
         <img id="img-logo" src="assets/img/logo.png" alt="Logo Ekan">
         <span>Front-end Test</span>
     </a>
+    <a routerLink="/beneficiarios">Beneficiarios</a>
     <div id="user-info" *ngIf="(user$ | async) as user; else login">
         <mat-icon>person</mat-icon>
         <span>{{ (user.sub | titlecase) }}</span>
