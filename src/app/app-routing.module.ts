@@ -5,8 +5,8 @@ import { BeneficiariosComponent } from './beneficiarios/beneficiarios.component'
 import { authGuard } from './auth/auth.guard';
 
 const routes: Routes = [
+  { path: '', component: BeneficiariosComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'beneficiarios', component: BeneficiariosComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({
