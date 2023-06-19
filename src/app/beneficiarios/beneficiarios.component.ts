@@ -9,15 +9,24 @@ import { Beneficiario } from './beneficiario.interface';
 })
 export class BeneficiariosComponent {
 
-  private beneficiarios: Beneficiario[] = [];
+  beneficiarios: Beneficiario[] = [];
+  displayedColumns = ['nome', 'telefone', 'dataNascimento', 'dataInclusao', 'dataAtualizacao', 'acoes'];
 
   constructor(private service: BeneficiariosService) {}
 
   ngOnInit() {
     this.service.list().subscribe({
-      next: data => console.log(data),
+      next: data => this.beneficiarios = data,
       error: err => console.log(err)
     });
+  }
+
+  edit(id: number) {
+    console.log(id);
+  }
+
+  delete(id: number) {
+    console.log(id);
   }
 
 }
