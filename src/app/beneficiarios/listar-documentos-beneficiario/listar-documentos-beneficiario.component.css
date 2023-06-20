@@ -1,0 +1,34 @@
+.main-card {
+    width: 40%;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;    
+    justify-content: space-around;
+    gap: 50px;
+    padding: 10px;
+}
+
+.data {
+    text-align: center;
+}
+
+.data * {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.data h4 {
+    color: #333;
+}
+
+.data p {
+    font-size: 1.3rem;
+}
+
+mat-list-item {
+    display: flex;
+    justify-content: space-between;
+}

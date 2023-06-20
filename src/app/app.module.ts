@@ -12,6 +12,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +24,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { BeneficiariosComponent } from './beneficiarios/beneficiarios.component';
 import { RequestInterceptor } from './auth/request.interceptor';
 import { NovoBeneficiarioComponent } from './beneficiarios/novo-beneficiario/novo-beneficiario.component';
+import { ListarDocumentosBeneficiarioComponent } from './beneficiarios/listar-documentos-beneficiario/listar-documentos-beneficiario.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { NovoBeneficiarioComponent } from './beneficiarios/novo-beneficiario/nov
     ToolbarComponent,
     LoginComponent,
     BeneficiariosComponent,
-    NovoBeneficiarioComponent
+    NovoBeneficiarioComponent,
+    ListarDocumentosBeneficiarioComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { NovoBeneficiarioComponent } from './beneficiarios/novo-beneficiario/nov
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDividerModule,
+    MatListModule,
   ],
   providers: [
     {
