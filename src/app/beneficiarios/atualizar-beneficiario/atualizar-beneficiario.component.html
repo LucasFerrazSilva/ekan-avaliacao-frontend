@@ -1,0 +1,33 @@
+<mat-card class="main-card">
+    <mat-card-header>
+        <h2>Atualizar Dados Cadastrais</h2>
+    </mat-card-header>
+    <mat-card-content  *ngIf="beneficiario; else noBeneficiario">
+        <div id="errors" *ngIf="errors.length > 0">
+            <div *ngFor="let error of errors">{{error}}</div>
+        </div> 
+        <form *ngIf="form" [formGroup]="form" (submit)="onSubmit()">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Nome</mat-label>
+                    <input type="text" matInput formControlName="nome">
+                </mat-form-field>   
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Telefone</mat-label>
+                    <input type="text" matInput formControlName="telefone" placeholder="(11) 12345-6789">
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Data de Nascimento</mat-label>
+                    <input matInput [matDatepicker]="dataNascimento" placeholder="dd/mm/aaaa" formControlName="dataNascimento">
+                    <mat-datepicker-toggle matIconSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+                    <mat-datepicker #dataNascimento></mat-datepicker>
+                </mat-form-field>            
+            </div>
+
+            <button id="submit-button" mat-flat-button color="accent" [disabled]="form.invalid">Atualizar</button>
+        </form>
+    </mat-card-content>
+    <ng-template #noBeneficiario>
+        Beneficiario não encontrado.
+    </ng-template>        
+</mat-card>

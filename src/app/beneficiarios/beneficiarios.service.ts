@@ -31,4 +31,8 @@ export class BeneficiariosService {
     return this.http.get<BeneficiarioComDocumentos>(`${API_URL}/${id}`);
   }
 
+  update(beneficiario: Beneficiario) {
+    return this.http.put(`${API_URL}/${beneficiario.id}`, beneficiario);
+  }
+
 }

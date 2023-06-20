@@ -25,6 +25,7 @@ import { BeneficiariosComponent } from './beneficiarios/beneficiarios.component'
 import { RequestInterceptor } from './auth/request.interceptor';
 import { NovoBeneficiarioComponent } from './beneficiarios/novo-beneficiario/novo-beneficiario.component';
 import { ListarDocumentosBeneficiarioComponent } from './beneficiarios/listar-documentos-beneficiario/listar-documentos-beneficiario.component';
+import { AtualizarBeneficiarioComponent } from './beneficiarios/atualizar-beneficiario/atualizar-beneficiario.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ListarDocumentosBeneficiarioComponent } from './beneficiarios/listar-do
     LoginComponent,
     BeneficiariosComponent,
     NovoBeneficiarioComponent,
-    ListarDocumentosBeneficiarioComponent
+    ListarDocumentosBeneficiarioComponent,
+    AtualizarBeneficiarioComponent
   ],
   imports: [
     BrowserModule,

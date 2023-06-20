@@ -29,7 +29,7 @@
               <th mat-header-cell *matHeaderCellDef> Ações </th>
               <td mat-cell *matCellDef="let element">
                 <a mat-icon-button routerLink="/{{element.id}}/documentos" color="accent" matTooltip="Ver documentos"><mat-icon>description</mat-icon></a>
-                <button mat-icon-button color="accent" (click)="edit(element.id)" matTooltip="Atualizar dados cadastrais"><mat-icon>edit</mat-icon></button>
+                <a mat-icon-button routerLink="/{{element.id}}/atualizar" color="accent" matTooltip="Atualizar dados cadastrais"><mat-icon>edit</mat-icon></a>
                 <button mat-icon-button color="warn" (click)="delete(element.id)" matTooltip="Remover"><mat-icon>delete</mat-icon></button>
               </td>
             </ng-container>
