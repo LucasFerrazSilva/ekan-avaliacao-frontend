@@ -23,6 +23,30 @@
                     <mat-datepicker #dataNascimento></mat-datepicker>
                 </mat-form-field>            
             </div>
+            
+            <h4>Documentos</h4>
+            <div id="documentos" formArrayName="documentosDTOs">
+                <ng-container *ngFor="let documentoForm of documentosFormArrayControls; let i=index;">
+                    <div class="documento" [formGroup]="documentoForm">
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Tipo do Documento</mat-label>
+                            <input type="text" matInput formControlName="tipoDocumento">
+                        </mat-form-field>  
+
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Descrição</mat-label>
+                            <input type="text" matInput formControlName="descricao">
+                        </mat-form-field>  
+
+                        <button class="remove-documento-button" type="button" color="warn" mat-mini-fab (click)="deleteDocumento(i)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </div>
+                </ng-container>
+                <button class="add-documento-button" type="button" color="accent" mat-mini-fab (click)="addDocumento()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
 
             <button id="submit-button" mat-flat-button color="accent" [disabled]="form.invalid">Atualizar</button>
         </form>
