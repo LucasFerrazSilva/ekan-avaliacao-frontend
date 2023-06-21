@@ -18,10 +18,6 @@ export class BeneficiariosComponent {
     this.loadList();
   }
 
-  edit(id: number) {
-    console.log(id);
-  }
-
   delete(id: number) {
     this.service.delete(id).subscribe(() => this.loadList());
   }

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Beneficiario } from './beneficiario.interface';
 import { environment } from 'src/environments/environment';
-import { NovoBeneficiario } from './novo-beneficiario/novo-beneficiario.interface';
 import { BeneficiarioComDocumentos } from './beneficiario-com-documentos.interface';
 
 const API_URL = environment.apiUrl + '/beneficiarios';
@@ -19,8 +18,8 @@ export class BeneficiariosService {
     return this.http.get<Beneficiario[]>(`${API_URL}`);
   }
   
-  create(novoBeneficiario: NovoBeneficiario): Observable<Beneficiario> {
-    return this.http.post<Beneficiario>(`${API_URL}`, novoBeneficiario);
+  create(beneficiario: Beneficiario): Observable<Beneficiario> {
+    return this.http.post<Beneficiario>(`${API_URL}`, beneficiario);
   }
 
   delete(id: number) {

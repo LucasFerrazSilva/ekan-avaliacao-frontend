@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import { BeneficiariosService } from '../beneficiarios.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Beneficiario } from '../beneficiario.interface';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BeneficiarioComDocumentos } from '../beneficiario-com-documentos.interface';
 
 @Component({
-  selector: 'app-atualizar-beneficiario',
-  templateUrl: './atualizar-beneficiario.component.html',
-  styleUrls: ['./atualizar-beneficiario.component.css']
+  selector: 'app-formulario-beneficiario',
+  templateUrl: './formulario-beneficiario.component.html',
+  styleUrls: ['./formulario-beneficiario.component.css']
 })
-export class AtualizarBeneficiarioComponent {
+export class FormularioBeneficiarioComponent {
 
   beneficiario: BeneficiarioComDocumentos | undefined;
   errors: string[] = [];
   form: FormGroup = this.formBuilder.group({
-    id: ['', Validators.required],
+    id: [''],
     nome: ['', Validators.required],
     telefone: ['', Validators.required],
     dataNascimento: ['', Validators.required],
@@ -36,7 +35,11 @@ export class AtualizarBeneficiarioComponent {
 
   getBeneficiario() {
     const id = this.route.snapshot.paramMap.get('id') || undefined;
-    this.service.get(id).subscribe(data => this.updateBeneficiario(data));
+
+    if (id)
+      this.service.get(id).subscribe(data => this.updateBeneficiario(data));
+    else
+      this.addDocumento();
   }
 
   updateBeneficiario(data: BeneficiarioComDocumentos) {
@@ -60,13 +63,20 @@ export class AtualizarBeneficiarioComponent {
   }
 
   onSubmit() {
-    const beneficiarioAtualizado: BeneficiarioComDocumentos = this.form.value;
-    console.log(beneficiarioAtualizado);
-    console.log(JSON.stringify(beneficiarioAtualizado));
-    this.service.update(beneficiarioAtualizado).subscribe({
-      next: () => this.router.navigate(['/']),
-      error: err => this.handleError(err)
-    });
+    const beneficiarioForm: BeneficiarioComDocumentos = this.form.value;
+
+    if (this.beneficiario) {
+      this.service.update(beneficiarioForm).subscribe({
+        next: () => this.router.navigate(['/']),
+        error: err => this.handleError(err)
+      });
+    } else {
+      this.service.create(beneficiarioForm).subscribe({
+        next: data => this.router.navigate(['/']),
+        error: err => this.handleError(err)
+      });
+    }
+
   }
 
   get documentos(): FormArray {
@@ -89,10 +99,12 @@ export class AtualizarBeneficiarioComponent {
 
   deleteDocumento(index: number) {
     this.documentos.removeAt(index);
+
+    if (this.documentos.length == 0)
+      this.addDocumento();
   }
 
   private handleError(err: HttpErrorResponse) {
-    console.log(err);
     this.errors = [];
     if (Array.isArray(err.error)) {
       err.error.forEach(error => this.errors.push(`${error.field}: ${error.message}`));

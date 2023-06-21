@@ -23,9 +23,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginComponent } from './auth/login/login.component';
 import { BeneficiariosComponent } from './beneficiarios/beneficiarios.component';
 import { RequestInterceptor } from './auth/request.interceptor';
-import { NovoBeneficiarioComponent } from './beneficiarios/novo-beneficiario/novo-beneficiario.component';
 import { ListarDocumentosBeneficiarioComponent } from './beneficiarios/listar-documentos-beneficiario/listar-documentos-beneficiario.component';
-import { AtualizarBeneficiarioComponent } from './beneficiarios/atualizar-beneficiario/atualizar-beneficiario.component';
+import { FormularioBeneficiarioComponent } from './beneficiarios/formulario-beneficiario/formulario-beneficiario.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +32,8 @@ import { AtualizarBeneficiarioComponent } from './beneficiarios/atualizar-benefi
     ToolbarComponent,
     LoginComponent,
     BeneficiariosComponent,
-    NovoBeneficiarioComponent,
     ListarDocumentosBeneficiarioComponent,
-    AtualizarBeneficiarioComponent
+    FormularioBeneficiarioComponent
   ],
   imports: [
     BrowserModule,

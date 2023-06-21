@@ -1,12 +1,12 @@
 <mat-card class="main-card">
     <mat-card-header>
-        <h2>Novo Beneficiário</h2>
+        <h2>Atualizar Dados Cadastrais</h2>
     </mat-card-header>
     <mat-card-content>
         <div id="errors" *ngIf="errors.length > 0">
             <div *ngFor="let error of errors">{{error}}</div>
         </div> 
-        <form [formGroup]="form" (submit)="onSubmit()">
+        <form *ngIf="form" [formGroup]="form" (submit)="onSubmit()">
             <div class="row">
                 <mat-form-field appearance="outline" color="accent">
                     <mat-label>Nome</mat-label>
@@ -23,7 +23,7 @@
                     <mat-datepicker #dataNascimento></mat-datepicker>
                 </mat-form-field>            
             </div>
-
+            
             <h4>Documentos</h4>
             <div id="documentos" formArrayName="documentosDTOs">
                 <ng-container *ngFor="let documentoForm of documentosFormArrayControls; let i=index;">
@@ -48,7 +48,7 @@
                 </button>
             </div>
 
-            <button id="submit-button" mat-flat-button color="accent" [disabled]="form.invalid">Adicionar</button>
+            <button id="submit-button" mat-flat-button color="accent" [disabled]="form.invalid">Atualizar</button>
         </form>
-    </mat-card-content>
+    </mat-card-content>      
 </mat-card>
