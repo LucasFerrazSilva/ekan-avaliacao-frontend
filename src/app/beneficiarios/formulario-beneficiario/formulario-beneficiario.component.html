@@ -1,6 +1,6 @@
 <mat-card class="main-card">
     <mat-card-header>
-        <h2>Atualizar Dados Cadastrais</h2>
+        <h2>{{ beneficiario ? 'Atualizar Dados Cadastrais' : 'Novo Beneficiario'}}</h2>
     </mat-card-header>
     <mat-card-content>
         <div id="errors" *ngIf="errors.length > 0">
@@ -47,8 +47,10 @@
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
-
-            <button id="submit-button" mat-flat-button color="accent" [disabled]="form.invalid">Atualizar</button>
+            
+            <button id="submit-button" mat-flat-button color="accent" [disabled]="form.invalid">
+                {{ beneficiario ? 'Atualizar' : 'Adicionar'}}
+            </button>
         </form>
     </mat-card-content>      
 </mat-card>
